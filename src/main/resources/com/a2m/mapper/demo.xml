@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.spmybtis.repositories.UserRepository">
+	<select id="selectAll" resultMap="result">
+		SELECT * FROM USER;
+	</select>
+
+	<select id="selectById" parameterType="Long"
+		resultType="com.example.spmybtis.entities.User">
+		SELECT * FROM USER WHERE ID = #{id};
+	</select>
+	<insert id="insert" parameterType="com.example.spmybtis.entities.User">
+		INSERT INTO USER (ID, NAME) VALUES
+		(#{id}, #{name});
+	</insert>
+	<resultMap id="result"
+		type="com.example.spmybtis.entities.User">
+		<result property="id" column="ID" />
+		<result property="name" column="NAME" />
+	</resultMap>
+</mapper>
